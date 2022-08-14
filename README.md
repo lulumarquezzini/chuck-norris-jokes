@@ -4,6 +4,8 @@
 
 A search engine for Chuck Norris jokes.
 
+[DEMO](https://cnorrisjokes.netlify.app/)
+
 # Checklist
 
 - [x] Basic Search
