@@ -1,14 +1,14 @@
 # chuck-norris-jokes
 
-This template should help get you started developing with Vue 3 in Vite.
+<img src="https://github.com/lulumarquezzini/chuck-norris-jokes/blob/main/src/assets/chucknorrisapproves.jpg">
 
-## Recommended IDE Setup
+A search engine for Chuck Norris jokes.
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+# Checklist
 
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+- [x] Basic Search
+- [x] I'm lucky feature
+- [x] Filter by Categories
 
 ## Project Setup
 
