@@ -13,6 +13,7 @@ function pushWithReplace() {
     name: "results",
     query: {
       input: input.input,
+      lucky: 'false'
     },
   });
 

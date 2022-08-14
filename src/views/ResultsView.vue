@@ -73,6 +73,7 @@ async function fetchResults() {
     <div className="mx-auto w-full px-3 sm:pl-[5%] lg:pl-44 font-OpenSans">
       <CategoryOptions
         :selected="list.category"
+        :lucky="route.query.lucky"
         @setCategory="(category) => (list.category = category)"
       />
       <p v-if="list.found" className="text-gray-500 text-md mb-5 mt-3">
