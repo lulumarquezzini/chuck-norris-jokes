@@ -5,10 +5,10 @@ import MenuOptions from "../MenuOptions.vue";
 describe("MenuOptions", () => {
   it("renders properly", () => {
     const wrapper = mount(MenuOptions, {
-        propsData: {
-          selected: 'category',
-          category: 'category'
-        }
+      propsData: {
+        selected: "category",
+        category: "category",
+      },
     });
     expect(wrapper.find("p").exists()).toBeTruthy();
   });

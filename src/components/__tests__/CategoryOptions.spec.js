@@ -5,9 +5,9 @@ import CategoryOptions from "../CategoryOptions.vue";
 describe("MenuOptions", () => {
   it("renders properly", () => {
     const wrapper = mount(CategoryOptions, {
-        propsData: {
-          selected: 'category',
-        }
+      propsData: {
+        selected: "category",
+      },
     });
     expect(wrapper.find("p").exists()).toBeTruthy();
   });

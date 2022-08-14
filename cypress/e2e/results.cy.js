@@ -24,9 +24,11 @@ describe("results", () => {
   });
 
   it("should be able to filter by categories", () => {
-    cy.get('p').contains('Explicit').click({force: true})
+    cy.get("p").contains("Explicit").click({ force: true });
     cy.contains("explicit");
-    cy.get('p').contains('Explicit').parent().should('have.class', 'text-blue-500')
+    cy.get("p")
+      .contains("Explicit")
+      .parent()
+      .should("have.class", "text-blue-500");
   });
-
 });

@@ -4,7 +4,7 @@ import { input } from "@/services/input.js";
 import { api } from "@/services/api.js";
 import { reactive, onMounted, watch, computed } from "vue";
 import { useRoute } from "vue-router";
-import CategoryOptions from '@/components/CategoryOptions.vue'
+import CategoryOptions from "@/components/CategoryOptions.vue";
 
 const route = useRoute();
 
@@ -14,20 +14,22 @@ const list = reactive({
   categories: [],
   found: true,
   loading: false,
-  category: 'all'
+  category: "all",
 });
 
 const filteredList = computed(() => {
-  if(list.category == 'all') {
-    list.total = list.result.length
-    list.found = list.total > 0 ?? false
-    return list.result
+  if (list.category == "all") {
+    list.total = list.result.length;
+    list.found = list.total > 0 ?? false;
+    return list.result;
   }
-  const filtered = list.result.filter(card => !card.categories.indexOf(list.category))
-  list.total = filtered.length
-  list.found = list.total > 0 ?? false
-  return filtered
-})
+  const filtered = list.result.filter(
+    (card) => !card.categories.indexOf(list.category)
+  );
+  list.total = filtered.length;
+  list.found = list.total > 0 ?? false;
+  return filtered;
+});
 
 watch(
   () => route.query.input,
@@ -68,10 +70,11 @@ async function fetchResults() {
 <template>
   <div class="">
     <Header />
-    <div
-      className="mx-auto w-full px-3 sm:pl-[5%] lg:pl-44 font-OpenSans"
-    >
-      <CategoryOptions :selected='list.category' @setCategory="(category) => list.category = category" />
+    <div className="mx-auto w-full px-3 sm:pl-[5%] lg:pl-44 font-OpenSans">
+      <CategoryOptions
+        :selected="list.category"
+        @setCategory="(category) => (list.category = category)"
+      />
       <p v-if="list.found" className="text-gray-500 text-md mb-5 mt-3">
         {{
           route.query.lucky == "true"
