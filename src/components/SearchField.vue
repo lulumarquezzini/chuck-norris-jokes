@@ -24,7 +24,7 @@ function pushWithReplace() {
 
 <template>
   <div
-    class="flex items-center w-full lg:ml-10 border rounded-full lg:max-w-2xl hover:shadow-md"
+    class="flex items-center w-full lg:ml-10 border rounded-full lg:max-w-3xl hover:shadow-md"
   >
     <div class="pl-5">
       <svg
@@ -51,6 +51,7 @@ function pushWithReplace() {
     <div class="pr-5">
       <svg
         @click="input.input = ''"
+        id="crossIcon"
         v-if="input.input"
         xmlns="http://www.w3.org/2000/svg"
         class="h-6 w-6 text-gray-400 cursor-pointer"

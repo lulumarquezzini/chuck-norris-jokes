@@ -2,8 +2,9 @@
 import Header from "@/components/Header.vue";
 import { input } from "@/services/input.js";
 import { api } from "@/services/api.js";
-import { reactive, onMounted, watch } from "vue";
+import { reactive, onMounted, watch, computed } from "vue";
 import { useRoute } from "vue-router";
+import CategoryOptions from '@/components/CategoryOptions.vue'
 
 const route = useRoute();
 
@@ -13,7 +14,20 @@ const list = reactive({
   categories: [],
   found: true,
   loading: false,
+  category: 'all'
 });
+
+const filteredList = computed(() => {
+  if(list.category == 'all') {
+    list.total = list.result.length
+    list.found = list.total > 0 ?? false
+    return list.result
+  }
+  const filtered = list.result.filter(card => !card.categories.indexOf(list.category))
+  list.total = filtered.length
+  list.found = list.total > 0 ?? false
+  return filtered
+})
 
 watch(
   () => route.query.input,
@@ -55,8 +69,9 @@ async function fetchResults() {
   <div class="">
     <Header />
     <div
-      className="mx-auto w-full px-3 sm:pl-[5%] md:pl-[14%] lg:pl-52 font-OpenSans"
+      className="mx-auto w-full px-3 sm:pl-[5%] lg:pl-44 font-OpenSans"
     >
+      <CategoryOptions :selected='list.category' @setCategory="(category) => list.category = category" />
       <p v-if="list.found" className="text-gray-500 text-md mb-5 mt-3">
         {{
           route.query.lucky == "true"
@@ -65,9 +80,9 @@ async function fetchResults() {
         }}
       </p>
       <div
-        v-for="item in list.result"
+        v-for="item in filteredList"
         :key="item"
-        className="max-w-xl mb-8 font-sans shadow-lg rounded overflow-hidden list"
+        className="max-w-3xl mb-8 font-sans shadow-lg rounded overflow-hidden list"
       >
         <p className="line-clamp-2 text-gray-900 font-OpenSans px-6 py-4">
           {{ item.value }}
@@ -90,7 +105,7 @@ async function fetchResults() {
       </div>
       <div
         v-if="list.loading"
-        class="absolute bottom-1/2 transform translate-x-1/2 translate-y-1/2"
+        class="absolute right-1/2 bottom-1/2 transform translate-x-1/2 translate-y-1/2"
       >
         <div
           class="border-t-transparent border-solid animate-spin rounded-full border-blue-400 border-8 h-64 w-64"
@@ -98,7 +113,7 @@ async function fetchResults() {
       </div>
       <div
         v-if="!list.found"
-        class="px-20 py-20 max-w-xl mb-8 font-sans overflow-hidden bg-white rounded-md"
+        class="px-20 py-20 max-w-3xl mb-8 font-sans overflow-hidden bg-white rounded-md"
       >
         <div class="flex flex-col items-center">
           <h6
