@@ -7,7 +7,7 @@ describe("MenuOptions", () => {
     const wrapper = mount(CategoryOptions, {
       propsData: {
         selected: "category",
-        lucky: "false"
+        lucky: "false",
       },
     });
     expect(wrapper.find("p").exists()).toBeTruthy();
