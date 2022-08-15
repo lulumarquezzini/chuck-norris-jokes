@@ -31,4 +31,11 @@ describe("results", () => {
       .parent()
       .should("have.class", "text-blue-500");
   });
+
+  it('should be able to click on the show more option', () => {
+    cy.contains("tests")
+    cy.get(".list").should("have.length", 10)
+    cy.get('button').contains('Show More').click()
+    cy.get(".list").should("have.length", 20);
+  })
 });

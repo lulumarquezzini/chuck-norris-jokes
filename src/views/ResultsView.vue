@@ -2,7 +2,7 @@
 import Header from "@/components/Header.vue";
 import { input } from "@/services/input.js";
 import { api } from "@/services/api.js";
-import { reactive, onMounted, watch, computed } from "vue";
+import { reactive, onMounted, watch, computed, ref } from "vue";
 import { useRoute } from "vue-router";
 import CategoryOptions from "@/components/CategoryOptions.vue";
 
@@ -15,6 +15,7 @@ const list = reactive({
   found: true,
   loading: false,
   category: "all",
+  numberShown: 10,
 });
 
 const filteredList = computed(() => {
@@ -74,7 +75,7 @@ async function fetchResults() {
       <CategoryOptions
         :selected="list.category"
         :lucky="route.query.lucky"
-        @setCategory="(category) => (list.category = category)"
+        @setCategory="(category) => (list.numberShown = 10, list.category = category)"
       />
       <p v-if="list.found" className="text-gray-500 text-md mb-5 mt-3">
         {{
@@ -84,7 +85,7 @@ async function fetchResults() {
         }}
       </p>
       <div
-        v-for="item in filteredList"
+        v-for="item in filteredList.slice(0, list.numberShown)"
         :key="item"
         className="max-w-3xl mb-8 font-sans shadow-lg rounded overflow-hidden list"
       >
@@ -107,6 +108,9 @@ async function fetchResults() {
           </template>
         </div>
       </div>
+      <button v-if="list.found && list.total > list.numberShown" @click="list.numberShown += 10" class="bg-gray-300 w-full mb-4 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l max-w-3xl">
+        Show More
+      </button>
       <div
         v-if="list.loading"
         class="absolute right-1/2 bottom-1/2 transform translate-x-1/2 translate-y-1/2"
