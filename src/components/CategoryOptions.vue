@@ -21,7 +21,7 @@ const props = defineProps(["selected", "lucky"]);
 <template>
   <div
     v-if="props.lucky == 'false'"
-    className="flex w-full text-gray-700 justify-evenly text-sm lg:text-base md:justify-start lg:space-x-36  boarer-b font-OpenSans"
+    className="flex w-full text-gray-700 justify-evenly text-sm lg:text-base md:justify-start lg:space-x-36  boarer-b font-OpenSans border-b-2 lg:max-w-3xl"
   >
     <div className="grid grid-cols-8 w-full md:flex md:space-x-6">
       <MenuOptions
