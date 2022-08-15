@@ -69,7 +69,7 @@ async function fetchResults() {
 </script>
 
 <template>
-  <div class="">
+  <div class="bg-gray-100 min-h-screen">
     <Header />
     <div className="mx-auto w-full px-3 sm:pl-[5%] lg:pl-44 font-OpenSans">
       <CategoryOptions
@@ -87,7 +87,7 @@ async function fetchResults() {
       <div
         v-for="item in filteredList.slice(0, list.numberShown)"
         :key="item"
-        className="max-w-3xl mb-8 font-sans shadow-lg rounded overflow-hidden list"
+        className="max-w-3xl mb-8 font-sans shadow-lg rounded overflow-hidden list bg-white"
       >
         <p className="line-clamp-2 text-gray-900 font-OpenSans px-6 py-4">
           {{ item.value }}
