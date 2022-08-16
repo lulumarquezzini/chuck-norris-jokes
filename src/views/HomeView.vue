@@ -5,7 +5,7 @@ import SearchButtons from "@/components/SearchButtons.vue";
 </script>
 
 <template>
-  <div class="flex flex-col items-center justify-center h-screen">
+  <div class="flex flex-col items-center justify-center h-screen dark:bg-black">
     <div class="mb-6">
       <img
         :src="chuckNorris"
@@ -16,7 +16,7 @@ import SearchButtons from "@/components/SearchButtons.vue";
     <SearchField />
     <SearchButtons />
     <div class="mt-6">
-      <div class="text-sm">
+      <div class="text-sm dark:text-white">
         Chuck Norris offered in:
         <span class="ml-2 text-blue-700">all languages</span>
       </div>

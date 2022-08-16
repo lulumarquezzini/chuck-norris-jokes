@@ -25,7 +25,7 @@ function pushWithReplace() {
 
 <template>
   <div
-    class="flex items-center w-full lg:ml-10 border rounded-full lg:max-w-3xl hover:shadow-md"
+    class="flex items-center w-full lg:ml-10 border rounded-full lg:max-w-3xl hover:shadow-md dark:bg-white"
   >
     <div class="pl-5">
       <svg

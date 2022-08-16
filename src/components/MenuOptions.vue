@@ -8,7 +8,7 @@ const props = defineProps(["category", "selected"]);
     :class="{ 'text-blue-500': props.selected == props.category }"
   >
     <slot></slot>
-    <p className="hidden group-hover:inline-flex text-sm">
+    <p className="hidden md:group-hover:inline-flex text-sm">
       {{ props.category[0].toUpperCase() + props.category.slice(1) }}
     </p>
   </div>
