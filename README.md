@@ -12,9 +12,8 @@ A search engine for Chuck Norris jokes.
 - [x] I'm lucky feature
 - [x] Filter by Categories
 - [x] Show More option added
-- [ ] Highlight Search Criteria
-- [ ] Dark Mode
-- [ ] English and Portuguese options
+- [x] Dark Mode
+- [x] English and Portuguese options
 
 ## Project Setup
 
