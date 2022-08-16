@@ -2,9 +2,11 @@
 import chuckNorris from "@/assets/chucknorris.png";
 import SearchField from "@/components/SearchField.vue";
 import SearchButtons from "@/components/SearchButtons.vue";
+import DarkMode from "@/components/DarkMode.vue";
 </script>
 
 <template>
+  <DarkMode />
   <div class="flex flex-col items-center justify-center h-screen dark:bg-black">
     <div class="mb-6">
       <img

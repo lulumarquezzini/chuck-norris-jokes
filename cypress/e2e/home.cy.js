@@ -58,9 +58,9 @@ describe("Home", () => {
     cy.get(".list").should("not.exist");
   });
 
-  it('should be able to change coor if the user saved a dark mode', () => {
-    localStorage.setItem('dark', 'true')
+  it("should be able to change coor if the user saved a dark mode", () => {
+    localStorage.setItem("dark", "true");
     cy.visit("/");
-    cy.get('body').should('have.class', 'dark')
-  })
+    cy.get("body").should("have.class", "dark");
+  });
 });

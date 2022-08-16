@@ -16,14 +16,13 @@ const list = reactive({
   loading: false,
   category: "all",
   numberShown: 10,
+  safe: false,
 });
 
-const darkMode = ref(document.body.classList.contains('dark'));
+const darkMode = ref(document.body.classList.contains("dark"));
 
-function applyDarkMode(){
-  document.body.classList[ 
-    darkMode.value ? 'add' : 'remove'
-  ]('dark')
+function applyDarkMode() {
+  document.body.classList[darkMode.value ? "add" : "remove"]("dark");
   localStorage.setItem("dark", JSON.stringify(darkMode.value));
 }
 
@@ -86,16 +85,26 @@ async function fetchResults() {
       <CategoryOptions
         :selected="list.category"
         :lucky="route.query.lucky"
-        @setCategory="(category) => (list.numberShown = 10, list.category = category)"
+        @setCategory="
+          (category) => ((list.numberShown = 10), (list.category = category))
+        "
       />
-      <div
-      className="flex mt-3"
-      >
+      <div className="flex mt-3 space-x-6">
         <div class="w-14 h-8">
-          <input type="checkbox" id="dark-mode-toggle" class="hidden" v-model="darkMode" />
-          <label for="dark-mode-toggle" class="w-full h-full bg-gray-800 dark:bg-white rounded-full p-1 flex justify-between cursor-pointer">
+          <input
+            type="checkbox"
+            id="dark-mode-toggle"
+            class="hidden"
+            v-model="darkMode"
+          />
+          <label
+            for="dark-mode-toggle"
+            class="w-full h-full bg-gray-800 dark:bg-white rounded-full p-1 flex justify-between cursor-pointer"
+          >
             <span class="inline dark:hidden">🌞</span>
-            <span class="w-6 h-6 rounded-full bg-white dark:bg-gray-800 block float-right dark:float-left"></span>
+            <span
+              class="w-6 h-6 rounded-full bg-white dark:bg-gray-800 block float-right dark:float-left"
+            ></span>
             <span class="hidden dark:inline">🌛</span>
           </label>
         </div>
@@ -112,7 +121,9 @@ async function fetchResults() {
         :key="item"
         className="max-w-3xl mb-8 font-sans shadow-lg rounded overflow-hidden list bg-white dark:bg-slate-800"
       >
-        <p className="line-clamp-2 text-gray-900 dark:text-white font-OpenSans px-6 py-4">
+        <p
+          className="line-clamp-2 text-gray-900 dark:text-white font-OpenSans px-6 py-4"
+        >
           {{ item.value }}
         </p>
         <div class="px-6 pt-4 pb-2">
@@ -131,7 +142,11 @@ async function fetchResults() {
           </template>
         </div>
       </div>
-      <button v-if="list.found && list.total > list.numberShown" @click="list.numberShown += 10" class="bg-gray-300 w-full mb-4 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l max-w-3xl">
+      <button
+        v-if="list.found && list.total > list.numberShown"
+        @click="list.numberShown += 10"
+        class="bg-gray-300 w-full mb-4 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l max-w-3xl"
+      >
         Show More
       </button>
       <div
@@ -150,7 +165,8 @@ async function fetchResults() {
           <h6
             class="mb-2 text-2xl font-bold text-center text-gray-800 md:text-3xl"
           >
-            <span class="text-red-500">Oops!</span> <span class="dark:text-white"> Joke not found </span>
+            <span class="text-red-500">Oops!</span>
+            <span class="dark:text-white"> Joke not found </span>
           </h6>
 
           <p class="mb-8 text-center text-gray-500 md:text-lg">
