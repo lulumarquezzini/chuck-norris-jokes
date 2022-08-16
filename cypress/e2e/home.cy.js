@@ -9,8 +9,8 @@ describe("Home", () => {
 
   it("should not search if you click without filling the inputs", () => {
     cy.visit("/");
-    cy.get("button").contains("Search").click();
-    cy.get("button").contains("Lucky").click();
+    cy.get("#searchButton").click();
+    cy.get("#luckyButton").click();
   });
 
   it("should be able to clear the fields with one click", () => {
@@ -34,7 +34,7 @@ describe("Home", () => {
     cy.visit("/");
     cy.get("input").type("argos");
     cy.get("input").should("have.value", "argos");
-    cy.get("button").contains("Search").click();
+    cy.get("#searchButton").click();
     cy.contains("Joke not found");
     cy.get(".list").should("not.exist");
   });
@@ -43,7 +43,7 @@ describe("Home", () => {
     cy.visit("/");
     cy.get("input").type("test");
     cy.get("input").should("have.value", "test");
-    cy.get("button").contains("Lucky").click();
+    cy.get("#luckyButton").click();
     cy.contains("Your lucky result is");
     cy.url().should("include", "lucky=true");
     cy.contains("test");
@@ -54,7 +54,7 @@ describe("Home", () => {
     cy.visit("/");
     cy.get("input").type("argos");
     cy.get("input").should("have.value", "argos");
-    cy.get("button").last().click();
+    cy.get("#luckyButton").click();
     cy.contains("Your lucky result is");
     cy.url().should("include", "lucky=true");
     cy.contains("Joke not found");
@@ -66,4 +66,10 @@ describe("Home", () => {
     cy.visit("/");
     cy.get("body").should("have.class", "dark");
   });
+
+  it("should be able to change languages", () => {
+    cy.visit("/");
+    cy.contains("Portuguese").click();
+    cy.contains("Estou com Sorte")
+  })
 });

@@ -5,6 +5,7 @@ import { api } from "@/services/api.js";
 import { reactive, onMounted, watch, computed, ref, watchEffect } from "vue";
 import { useRoute } from "vue-router";
 import CategoryOptions from "@/components/CategoryOptions.vue";
+import {translation } from '@/services/translation.js'
 
 const route = useRoute();
 
@@ -112,8 +113,8 @@ async function fetchResults() {
       <p v-if="list.found" className="text-gray-500 text-md mb-5 mt-3">
         {{
           route.query.lucky == "true"
-            ? "Your lucky result is: "
-            : "About " + list.total + " results"
+            ? translation("Your lucky result is: ")
+            : translation("About ") + list.total + translation(" results")
         }}
       </p>
       <div
@@ -147,7 +148,7 @@ async function fetchResults() {
         @click="list.numberShown += 10"
         class="bg-gray-300 w-full mb-4 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l max-w-3xl"
       >
-        Show More
+        {{translation("Show More")}}
       </button>
       <div
         v-if="list.loading"
@@ -166,12 +167,11 @@ async function fetchResults() {
             class="mb-2 text-2xl font-bold text-center text-gray-800 md:text-3xl"
           >
             <span class="text-red-500">Oops!</span>
-            <span class="dark:text-white"> Joke not found </span>
+            <span class="dark:text-white"> {{translation(" Joke not found")}} </span>
           </h6>
 
           <p class="mb-8 text-center text-gray-500 md:text-lg">
-            That's because there are no Chuck Norris Jokes, only Chuck Norris
-            Facts.
+            {{translation("That's because there are no Chuck Norris Jokes, only Chuck Norris Facts.")}}
           </p>
         </div>
       </div>

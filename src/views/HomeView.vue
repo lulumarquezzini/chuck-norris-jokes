@@ -3,6 +3,7 @@ import chuckNorris from "@/assets/chucknorris.png";
 import SearchField from "@/components/SearchField.vue";
 import SearchButtons from "@/components/SearchButtons.vue";
 import DarkMode from "@/components/DarkMode.vue";
+import { language, translation } from '@/services/translation.js'
 </script>
 
 <template>
@@ -19,8 +20,9 @@ import DarkMode from "@/components/DarkMode.vue";
     <SearchButtons />
     <div class="mt-6">
       <div class="text-sm dark:text-white">
-        Chuck Norris offered in:
-        <span class="ml-2 text-blue-700">all languages</span>
+        {{"Chuck Norris " + translation('offered in')}}
+        <span @click="language.selected='en'" class="ml-2 text-blue-700 cursor-pointer">English</span>
+        <span @click="language.selected='pt-br'" class="ml-2 text-blue-700 cursor-pointer">Portuguese</span>
       </div>
     </div>
   </div>

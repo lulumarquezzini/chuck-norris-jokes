@@ -3,7 +3,7 @@ describe("results", () => {
     cy.visit("/");
     cy.contains("Chuck Norris");
     cy.get("input").type("test");
-    cy.get("button").contains("Search").click();
+    cy.get("#searchButton").click();
   });
 
   it("should be able to search in the results page", () => {
